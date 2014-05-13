@@ -4,98 +4,11 @@
 	
 	<link rel="stylesheet" type="text/css" href="main.css"/>
 	<title>HTML5 Puzzle</title>
-	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script>
-	var gameBoard =
-		[["l11","b1","b2","l21"],
-		 ["l22","b3","b4","l22"],
-		 ["l31","h1","h2","l41"],
-		 ["l32","sm1","sm2","l42"],
-		 ["sm3","e1","e2","sm4"]];
-		
-	$(document).ready(function(){
-		$(".sm").click(function(){
-			checkAround(findPiece($(this).attr('id')), "s");
-		});
-		$(".long_v").click(function(){
-			checkAround(findPiece($(this).attr('id')), "l");
-		
-		});
-		
-		$(".blank").click(function(){
-			checkAround(findPiece($(this).attr('id')), "e");
-		
-		});
-		$(".long_h").click(function(){
-			checkAround(findPiece($(this).attr('id')), "h");
-		});
-		$(".block").click(function(){
-			checkAround(findPiece($(this).attr('id')), "b");
-		
-		});
-		
-	});
-	
-	function findPiece(id) {
-		var results = [];
-		for (i = 0; i < gameBoard.length; i++) {
-			for (j = 0; j < gameBoard[i].length; j++) {
-				if (id == gameBoard[i][j]) {
-					alert("Found at " + j + "," + i	);
-					results = [j,i];
-					return results;
-				}
-			}
-		}
-	}
-	
-	function getPieceType(x,y) {
-		var type = gameBoard[x][y].substring(0,1);
-		return type;
-	}
-	
-	
-	function checkAround(coordinates, type){
-		var xPos = coordinates[0];
-		var yPos = coordinates[1];
-		// Remember board takes Y then X
-		switch (type) {
-			// Remember pieces > 1 Piece check from "Header" piece
-			case "s":
-				if (getPieceType(yPos, xPos-1) == "e") {
-					alert("Empty to left");
-				} else if (getPieceType(yPos, xPos+1) == "e") {
-					alert("Empty to right");
-				} else if (getPieceType(yPos - 1, xPos) == "e") {
-					alert("Empty above");
-				} else if (getPieceType(yPos + 1, xPos) == "e") {
-					alert("Empty below");
-				}
-					
-				break;
-			case "l":
-				alert("Long");
-				break;
-			case "h":
-				alert("Horizontal");
-				break;
-			case "b":
-				alert("Block");
-				break;
-			default:
-				break;
-		}
-	}
-	
-	function refreshBoard() {
-		// This function needs to update 
-		// move arrow hints for pieces near
-		// blank spaces.
-	}
-
-	</script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/kloski.js"></script>
 </head>
-<body onload="init()">
+<body>
 	<div id="container2">
 		<div id="l11" class="long_v">Long1</div>
 		<div id="b1" class="block">Block</div>
@@ -110,6 +23,7 @@
 		<div id="e2" class="blank">blank 2</div>
 		<div id="sm4" class="sm">small</div>
 	</div >
+
 	
 
 </body>

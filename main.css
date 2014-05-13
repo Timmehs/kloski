@@ -88,6 +88,9 @@
 }
 
 #sm4 {
+	width: 96px;
+	height: 96px;
+	background-color: #66E275;
 	top: 400px;
 	left: 300px;
 }
@@ -101,6 +104,8 @@
 	top: 400px;
 	left: 200px;
 }
+
+
 
 
 
