@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<link rel="stylesheet" type="text/css" href="main.css"/>
+	<title>HTML5 Puzzle</title>
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script>
+	var gameBoard =
+		[["l11","b1","b2","l21"],
+		 ["l22","b3","b4","l22"],
+		 ["l31","h1","h2","l41"],
+		 ["l32","sm1","sm2","l42"],
+		 ["sm3","e1","e2","sm4"]];
+		
+	$(document).ready(function(){
+	  $(".sm").click(function(){
+		findPiece($(this).attr('id'));
+		});
+		
+	});
+	
+	function findPiece(id) {
+		
+		for (i = 0; i < gameBoard.length; i++) {
+			for (j = 0; j < gameBoard[i].length; j++) {
+				if (id == gameBoard[i][j]) {
+					alert("Found at " + j + "," + i	);
+				}
+			}
+		}
+		
+		
+	}
+	
+	
+	
+	</script>
+</head>
+<body onload="init()">
+	<div id="container2">
+		<div id="l11" class="long_v">Long1</div>
+		<div id="block">Block</div>
+		<div id="l21" class="long_v">Long2</div>
+		<div id="l31" class="long_v">Long3</div>
+		<div id="hori" class="long_h">horizontal</div>
+		<div id="sm1" class="sm">small</div>
+		<div id="sm2" class="sm">small</div>
+		<div id="l41" class="long_v">long4</div>
+		<div id="sm3" class="sm">small</div>
+		<div id="b1" class="blank">blank 1</div>
+		<div id="b2" class="blank">blank 2</div>
+		<div id="sm4" class="sm">small</div>
+	</div >
+	
+	<!--
+	<div id="container">
+		<div id="piece1">1</div>
+		<div id="piece2">2</div>
+		<div id="piece3">3</div>
+		<div id="piece4">4</div>
+		<div id="piece5">5</div>
+		<div id="piece6">6</div>
+		<div id="piece7">7</div>
+		<div id="piece8">8</div>
+		<div id="piece9">9</div>
+		<div id="piece10">10</div>
+		<div id="piece11">11</div>
+		<div id="piece12">12</div>
+		<div id="piece13">13</div>
+		<div id="piece14">14</div>
+		<div id="piece15">15</div>
+		<div id="piece16">16</div>
+		<div id="piece17">17</div>
+		<div id="piece18">18</div>
+		<div id="piece19">19</div>
+		<div id="piece20">20</div>
+		
+	</div>
+	-->
+</body>
+
+</html>
