@@ -14,42 +14,100 @@
 		 ["sm3","e1","e2","sm4"]];
 		
 	$(document).ready(function(){
-	  $(".sm").click(function(){
-		findPiece($(this).attr('id'));
+		$(".sm").click(function(){
+			checkAround(findPiece($(this).attr('id')), "s");
+		});
+		$(".long_v").click(function(){
+			checkAround(findPiece($(this).attr('id')), "l");
+		
+		});
+		
+		$(".blank").click(function(){
+			checkAround(findPiece($(this).attr('id')), "e");
+		
+		});
+		$(".long_h").click(function(){
+			checkAround(findPiece($(this).attr('id')), "h");
+		});
+		$(".block").click(function(){
+			checkAround(findPiece($(this).attr('id')), "b");
+		
 		});
 		
 	});
 	
 	function findPiece(id) {
-		
+		var results = [];
 		for (i = 0; i < gameBoard.length; i++) {
 			for (j = 0; j < gameBoard[i].length; j++) {
 				if (id == gameBoard[i][j]) {
 					alert("Found at " + j + "," + i	);
+					results = [j,i];
+					return results;
 				}
 			}
 		}
-		
-		
+	}
+	
+	function getPieceType(x,y) {
+		var type = gameBoard[x][y].substring(0,1);
+		return type;
 	}
 	
 	
+	function checkAround(coordinates, type){
+		var xPos = coordinates[0];
+		var yPos = coordinates[1];
+		// Remember board takes Y then X
+		switch (type) {
+			// Remember pieces > 1 Piece check from "Header" piece
+			case "s":
+				if (getPieceType(yPos, xPos-1) == "e") {
+					alert("Empty to left");
+				} else if (getPieceType(yPos, xPos+1) == "e") {
+					alert("Empty to right");
+				} else if (getPieceType(yPos - 1, xPos) == "e") {
+					alert("Empty above");
+				} else if (getPieceType(yPos + 1, xPos) == "e") {
+					alert("Empty below");
+				}
+					
+				break;
+			case "l":
+				alert("Long");
+				break;
+			case "h":
+				alert("Horizontal");
+				break;
+			case "b":
+				alert("Block");
+				break;
+			default:
+				break;
+		}
+	}
 	
+	function refreshBoard() {
+		// This function needs to update 
+		// move arrow hints for pieces near
+		// blank spaces.
+	}
+
 	</script>
 </head>
 <body onload="init()">
 	<div id="container2">
 		<div id="l11" class="long_v">Long1</div>
-		<div id="block">Block</div>
+		<div id="b1" class="block">Block</div>
 		<div id="l21" class="long_v">Long2</div>
 		<div id="l31" class="long_v">Long3</div>
-		<div id="hori" class="long_h">horizontal</div>
+		<div id="h1" class="long_h">horizontal</div>
 		<div id="sm1" class="sm">small</div>
 		<div id="sm2" class="sm">small</div>
 		<div id="l41" class="long_v">long4</div>
 		<div id="sm3" class="sm">small</div>
-		<div id="b1" class="blank">blank 1</div>
-		<div id="b2" class="blank">blank 2</div>
+		<div id="e1" class="blank">blank 1</div>
+		<div id="e2" class="blank">blank 2</div>
 		<div id="sm4" class="sm">small</div>
 	</div >
 	

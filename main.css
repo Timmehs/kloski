@@ -25,7 +25,7 @@
 	background-color: #FF7A73;
 }
 
-#block {
+#b1{
 	width: 196px;
 	height: 196px;
 	left: 100px;
@@ -68,7 +68,7 @@
 	top: 200px;
 }
 
-#hori {
+#h1 {
 	left: 100px;
 	top: 200px;
 }
@@ -92,12 +92,12 @@
 	left: 300px;
 }
 
-#b1 {
+#e1 {
 	top: 400px;
 	left: 100px;
 }
 
-#b2 {
+#e2 {
 	top: 400px;
 	left: 200px;
 }
