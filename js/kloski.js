@@ -3,35 +3,72 @@ var gameBoard =
 		 ["b1", "b3", "h1","sm1", "e1"  ],
 		 ["b2", "b4", "h2","sm2", "e2"  ], 
 		 ["l21","l22","l41","l42", "sm4"]];
-	
+var pieces = ["#l11","#b1","#l21", "#l31","#h1", "#l41","#sm1","#sm2","#sm3","#sm4"];
 
-//initPiece(gameBoard[0][1]);
-	
 var moveCounter = 0;
 	
 	
 $(document).ready(function(){
-	
 	updatePieces();
+	$("#reset").click(function(){
+		if (moveCounter > 0) {
+			$(".confirm").fadeIn();
+		}
+	});
+	$("#undo").click(function() {
+		if (moveCounter > 0) {
+			undo(gameStates.pop());
+		}
+	});
+	$("#ok").click(function(){
+		$(".confirm").hide();
+		resetGame();
+		
+	});
+	$("#cancel").click(function(){
+		$(".confirm").hide();
+	});
 	
 });
 
+
 function updatePieces() {
-	var pieces = ["#l11","#b1","#l21", "#l31","#h1", "#l41","#sm1","#sm2","#sm3","#sm4"];
 	var gamePiece;
 	var i;
 	var surrounds;
-	$("#status").text("Updating");
 	for (i = 0; i < pieces.length; i++) {
 		gamePiece = $(pieces[i]);
 		surrounds = checkAround(findPiece(gamePiece.attr('id')));
 		defineConstraints(surrounds, pieces[i]);
 	}
-	$("#status").text("Stopped " + moveCounter);
+	$("#counter").text(moveCounter);
 	
 	if (gameBoard[2][4] == "b4") {
 		alert("YOU HAVE SOLVED THE ANCIENT PUZZLE OF KLOSKI!!!");
 	}
+}
+
+
+
+function resetGame() {
+	var coordinates;
+	gameBoard =
+		[["l11","l12","l31","l32", "sm3"],
+		 ["b1", "b3", "h1","sm1", "e1"  ],
+		 ["b2", "b4", "h2","sm2", "e2"  ], 
+		 ["l21","l22","l41","l42", "sm4"]];
+	moveCounter = 0;
+	
+	for (i = 0; i < pieces.length; i++) {
+		coordinates = findPiece(pieces[i].substring(1));
+		$(pieces[i]).animate({left: coordinates[0] * 100, 
+			top: coordinates[1] * 100});
+		$(pieces[i]).css({left: coordinates[0] * 100, 
+			top: coordinates[1] * 100});
+	}
+	
+	updatePieces();
+	//alert(gameBoard[0] + "\n" + gameBoard[1] + "\n" + gameBoard[2] + "\n" + gameBoard[3]);
 }
 	
 	
@@ -66,10 +103,10 @@ function defineConstraints(surrounds, id) {
 	
 	gamePiece.draggable({
 		containment: constraints,
-		stack: ".sm, .long_v, .long_h,",
+		stack: ".sm, .long_v, .long_h, #block",
 		grid: [100,100],
 		start: function(event, ui) {
-				$("#status").text("Started" + moveCounter);
+				oldGameBoard = gameBoard;
 				x = event.originalEvent.pageX;
 				y = event.originalEvent.pageY;
 			},
@@ -81,17 +118,19 @@ function defineConstraints(surrounds, id) {
 			}
 		},
 		stop: function(event,ui) {
-			$("#status").text("Stopped " + moveCounter);
 			x = y = null;
 			gamePiece.draggable('option', 'axis', false);
 			if ($(id).offset().left != position.left) {
 				swapBlanks(id, coordinates);
 				moveCounter++;
+				updatePieces();
 			} else if($(id).offset().top != position.top) {
 				swapBlanks(id, coordinates);
 				moveCounter++;
-			}
-			updatePieces();
+				updatePieces();
+			} 
+			
+			
 		},
 		distance: 20
 	});
