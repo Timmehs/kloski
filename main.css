@@ -1,5 +1,5 @@
 
-#container2 {
+#gameboard{
 	width: 406px;
 	height: 504px;
 	left: 20px;
@@ -11,7 +11,15 @@
 	float:left;
 }
 
-#container2 * {
+#status {
+	left: 600px;
+	top:250px;
+	float: left;
+	position: absolute;
+	}
+
+
+#gameboard * {
 	border: 2px solid white;
 	float: left;
 	text-align: center;
@@ -48,8 +56,8 @@
 }
 
 .blank {
-	width: 100px;
-	height: 100px;
+	width: 96px;
+	height: 96px;
 }
 
 #l11 {
