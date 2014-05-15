@@ -120,10 +120,9 @@
 	width: 196px;
 	height: 196px;
 	left: 100px;
-	opacity: 0.6;
 	position: relative;
 	text-align: left;
-	background-color: #FFB573;
+	background-image: url('jake.jpg');
 }
 
 .long_h {

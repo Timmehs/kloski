@@ -109,6 +109,7 @@ function defineConstraints(surrounds, id) {
 				oldGameBoard = gameBoard;
 				x = event.originalEvent.pageX;
 				y = event.originalEvent.pageY;
+				console.log(id);
 			},
 		drag: function(event) {
 			if (x && y) {
@@ -116,6 +117,11 @@ function defineConstraints(surrounds, id) {
 				gamePiece.draggable('option', 'axis', axis);
 				x = y = null;
 			}
+			if (type == 's') {
+				console.log('Draggable: x:'+gamePiece.position().left+' y:' + gamePiece.position().top);
+				console.log($("#e2").position().left + "," + $("#e2").position().top);
+			}
+			
 		},
 		stop: function(event,ui) {
 			x = y = null;
@@ -124,10 +130,12 @@ function defineConstraints(surrounds, id) {
 				swapBlanks(id, coordinates);
 				moveCounter++;
 				updatePieces();
+				consoleShowBoard();
 			} else if($(id).offset().top != position.top) {
 				swapBlanks(id, coordinates);
 				moveCounter++;
 				updatePieces();
+				consoleShowBoard();
 			} 
 			
 			
@@ -135,6 +143,22 @@ function defineConstraints(surrounds, id) {
 		distance: 20
 	});
 }
+
+function consoleShowBoard(){
+	var board = "Gameboard\n-----------------------\n";
+	var i,j;
+	j = 0;
+	for (i = 0; i < 5; i++) {
+		for(j = 0; j < 4; j++){
+			board += gameBoard[j][i];
+			var length = gameBoard[j][i].length;
+			length == 3 ? board += "  " : board += "   ";
+			if (j == 3)
+				board += "\n";
+		}
+	}
+	 console.log(board);
+}	
 
 function swapBlanks(id, coordinates) {
 	var oldX = coordinates[0]/100;
@@ -209,15 +233,36 @@ function swapBlanks(id, coordinates) {
 				$("#"+gameBoard[oldX][oldY]).css({left: oldX*100, top:  oldY * 100});
 				$("#"+gameBoard[oldX+1][oldY]).css({left: (oldX+1)*100, top:  oldY * 100});	
 			} else if (newX > oldX) {
-				gameBoard[oldX][oldY] = gameBoard[newX+1][newY];
-				gameBoard[newX+1][newY] = gameBoard[oldX+1][oldY];
-				gameBoard[newX][newY] = id.substring(1);
-				$("#"+gameBoard[oldX][oldY]).css({left: oldX*100, top:  oldY * 100});
+				if (newX == oldX+2){
+					gameBoard[oldX][oldY] = "e1";
+					gameBoard[oldX+1][oldY] = "e2";
+					gameBoard[newX][newY] = "h1";
+					gameBoard[newX+1][newY] = "h2";
+					$("#"+gameBoard[oldX][oldY]).css({left: oldX*100, top:  oldY * 100});
+					$("#"+gameBoard[oldX+1][oldY]).css({left: (oldX+1)*100, top:  oldY * 100});
+				} else{
+					gameBoard[oldX][oldY] = gameBoard[newX+1][newY];
+					gameBoard[newX+1][newY] = gameBoard[oldX+1][oldY];
+					gameBoard[newX][newY] = id.substring(1);
+					$("#"+gameBoard[oldX][oldY]).css({left: oldX*100, top:  oldY * 100});
+				}
+				
+				
 			} else if (newX < oldX) {
-				gameBoard[oldX+1][oldY] = gameBoard[newX][newY];
-				gameBoard[newX+1][newY] = gameBoard[oldX+1][oldY];
-				gameBoard[newX][newY] = id.substring(1);
-				$("#"+gameBoard[oldX+1][oldY]).css({left: (oldX+1)*100, top:  oldY * 100});
+				if (newX == oldX-2){
+					gameBoard[oldX][oldY] = "e1";
+					gameBoard[oldX+1][oldY] = "e2";
+					gameBoard[newX][newY] = "h1";
+					gameBoard[newX+1][newY] = "h2";
+					$("#"+gameBoard[oldX+1][oldY]).css({left: (oldX+1)*100, top:  oldY * 100});
+					$("#"+gameBoard[oldX][oldY]).css({left: (oldX)*100, top:  oldY * 100});
+				
+				} else {
+					gameBoard[oldX+1][oldY] = gameBoard[newX][newY];
+					gameBoard[newX+1][newY] = "h2";
+					gameBoard[newX][newY] = id.substring(1);
+					$("#"+gameBoard[oldX+1][oldY]).css({left: (oldX+1)*100, top:  oldY * 100});
+				}
 			}
 			break;
 		case 'b':
