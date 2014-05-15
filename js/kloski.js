@@ -112,18 +112,39 @@ function defineConstraints(surrounds, id) {
 				console.log(id);
 			},
 		drag: function(event) {
+			if (type != 's') {
 			if (x && y) {
 				axis = Math.abs(event.originalEvent.pageX - x) > Math.abs(event.originalEvent.pageY - y) ? 'x' : 'y';
 				gamePiece.draggable('option', 'axis', axis);
 				x = y = null;
 			}
+			}
 			if (type == 's') {
 				console.log('Draggable: x:'+gamePiece.position().left+' y:' + gamePiece.position().top);
-				console.log($("#e2").position().left + "," + $("#e2").position().top);
+				console.log("Blank Piece: " + $("#e2").position().left + "," + $("#e2").position().top);
 			}
+			
+		
 			
 		},
 		stop: function(event,ui) {
+			// Check if sm position is over blank piece
+			var e1 = $("#e1");
+			var e2 = $("#e2");
+			var pieceX = gamePiece.position().left;
+			var pieceY = gamePiece.position().top;
+			var e1x = e1.position().left;
+			var e1y = e1.position().top;
+			var e2x = e2.position().left;
+			var e2y = e2.position().top;
+			if (type == 's') {
+			     if (((pieceX == e1x) && (pieceY == e1y)) || ((pieceX == e2x) && (pieceY == e2y)) ) {
+				console.log('valid move');
+			     } else {
+				gamePiece.css({left: coordinates[0], top: coordinates[1]});
+								
+			     }
+			}
 			x = y = null;
 			gamePiece.draggable('option', 'axis', false);
 			if ($(id).offset().left != position.left) {
@@ -377,17 +398,59 @@ function horizontalChecks(surrounds, oldX, oldY){
 function smallChecks(surrounds, oldX, oldY){
 	var newX = oldX;
 	var newY = oldY;
+	console.log("surrounding pieces: " + surrounds);
 	if (surrounds[0] == 'e') {
-		oldX -= 100;
+		if(surrounds[4] == 'e') {
+			oldX -= 100;
+			oldY -= 100;
+			return [oldX, oldY, newX, newY];
+		} else if (surrounds[7] == 'e') {
+			oldX -= 100;
+			oldY += 100;
+			return [oldX, oldY, newX, newY];
+		} else {
+			oldX -= 100;
+		}
 	}
 	if (surrounds[1] == 'e') {
-		oldY -= 100;
+		if(surrounds[4] == 'e') {
+			oldX -= 100;
+			oldY -= 100;
+			return [oldX, oldY, newX, newY];
+		} else if (surrounds[5] == 'e') {
+			newX += 100;
+			oldY -= 100;
+			return [oldX, oldY, newX, newY];
+		} else {
+			oldY -= 100;
+		}
+		
 	}
 	if (surrounds[2] == 'e') {
+		if(surrounds[5] == 'e') {
+			newX += 100;
+			newY -= 100;
+			return [oldX, oldY, newX, newY];
+		} else if (surrounds[6] == 'e') {
+			newX += 100;
+			newY += 100;
+			return [oldX, oldY, newX, newY];
+		} else {
 		newX += 100;
+		}
 	}
 	if (surrounds[3] == 'e') {
+		if(surrounds[6] == 'e') {
+			newX += 100;
+			newY += 100;
+			return [oldX, oldY, newX, newY];
+		} else if (surrounds[7] == 'e') {
+			oldX -= 100;
+			newY += 100;
+			return [oldX, oldY, newX, newY];
+		} else {
 		newY += 100;
+		}
 	}
 	if (surrounds[0] == '2e') {
 		oldX -= 200;
@@ -443,6 +506,11 @@ function checkAround(coordinates){
 			surroundingPieces[1] = getPieceType(xPos, yPos-1); // Top
 			surroundingPieces[2] = getPieceType(xPos+1, yPos); // Right
 			surroundingPieces[3] = getPieceType(xPos, yPos+1); // Bottom
+			surroundingPieces[4] = getPieceType(xPos-1, yPos-1); // Diag Top Left
+			surroundingPieces[5] = getPieceType(xPos+1, yPos-1); // Diag Top Right
+			surroundingPieces[6] = getPieceType(xPos+1, yPos+1); // Diag Bot Right
+			surroundingPieces[7] = getPieceType(xPos-1, yPos+1); // Diag Bot Left
+					
 			// check for 2 empties in a row
 			if (surroundingPieces[0] == 'e' && getPieceType(xPos-2, yPos) == 'e' ) {
 				surroundingPieces[0] = '2e';
