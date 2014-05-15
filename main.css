@@ -91,6 +91,7 @@
 	box-shadow: 10px 10px 5px #888888;
 	position: relative;
 	float:left;
+	background-image: url('img/gameboard_bg.png');
 }
 
 #status {
@@ -108,6 +109,7 @@
 	text-align: center;
 	position: absolute;
 	background-size: auto;
+	
 }
 
 .long_v {
@@ -140,6 +142,7 @@
 .blank {
 	width: 96px;
 	height: 96px;
+	opacity:0.1;
 }
 
 #l11 {
