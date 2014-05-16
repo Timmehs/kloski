@@ -1,12 +1,6 @@
-#spacer {
-	float:left; width:20%; min-width: 100px;
-	height: 100%;
-	position: relative;
-}
-
 #game_container {
-	width: auto;
-	float:left;
+	width: 50%;
+	left: 25%;
 	height: 600px;
 	position: relative;
 	}
@@ -17,9 +11,8 @@
 	width: 100%;
 	top: 175px;
 	height: 600px;
-	min-width: 850px;
 	text-align:center;
-	position: relative;
+	position: absolute;
 	border-top: 3px solid #cccccc;
 	border-bottom: 3px solid #cccccc;
 	font-family: Georgia;
@@ -104,13 +97,6 @@
 	float:left;
 }
 
-#status {
-	left: 600px;
-	top:250px;
-	float: left;
-	position: absolute;
-	}
-
 
 #gameboard * {
 	border: 2px solid white;
@@ -134,7 +120,7 @@
 	left: 100px;
 	position: relative;
 	text-align: left;
-	background-image: url('jake.jpg');
+	background-image: url('../img/jake.jpg');
 }
 
 .long_h {
