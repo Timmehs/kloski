@@ -3,7 +3,7 @@ var gameBoard =
 		 ["b1", "b3", "h1","sm1", "e1"  ],
 		 ["b2", "b4", "h2","sm2", "e2"  ], 
 		 ["l21","l22","l41","l42", "sm4"]];
-var pieces = ["#l11","#b1","#l21", "#l31","#h1", "#l41","#sm1","#sm2","#sm3","#sm4"];
+var pieces = ["#l11","#b1","#l21", "#l31","#h1", "#l41","#sm1","#sm2","#sm3","#sm4","#e1","#e2"];
 
 var moveCounter = 0;
 	
@@ -36,7 +36,7 @@ function updatePieces() {
 	var gamePiece;
 	var i;
 	var surrounds;
-	for (i = 0; i < pieces.length; i++) {
+	for (i = 0; i < pieces.length-2; i++) {
 		gamePiece = $(pieces[i]);
 		surrounds = checkAround(findPiece(gamePiece.attr('id')));
 		defineConstraints(surrounds, pieces[i]);
@@ -66,7 +66,6 @@ function resetGame() {
 		$(pieces[i]).css({left: coordinates[0] * 100, 
 			top: coordinates[1] * 100});
 	}
-	
 	updatePieces();
 	//alert(gameBoard[0] + "\n" + gameBoard[1] + "\n" + gameBoard[2] + "\n" + gameBoard[3]);
 }
