@@ -369,6 +369,7 @@ function longChecks(surrounds, oldX, oldY){
 	return [oldX, oldY, newX, newY];
 }
 
+//STILL HAVING FUNKY ISSUES WITH HORIZONTAL CHECKS
 function horizontalChecks(surrounds, oldX, oldY){
 	var newX = oldX;
 	var newY = oldY;
@@ -388,6 +389,7 @@ function horizontalChecks(surrounds, oldX, oldY){
 
 	if (surrounds[4] == 'e' && surrounds[5] == 'e') {
 		newY += 100;
+		console.log("Empty below");
 	}
 	
 	
