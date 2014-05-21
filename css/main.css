@@ -91,6 +91,7 @@
 	cursor: pointer;
 	background-color: #cccccc;
 	}
+<<<<<<< HEAD
 #goal {
 	position: absolute;
 	margin-left: 131px;
@@ -100,6 +101,9 @@
 	border-bottom: 1px solid red;
 	font-family: "Roboto", Arial;
 }
+=======
+
+>>>>>>> borderwork
 
 .myButton {
 	border: 1px solid black;
@@ -125,7 +129,16 @@
 	position: absolute;
 	background-size: auto;
 	opacity: 0.95;
-	
+}
+#goal {
+	position: absolute;
+	top: 85%;
+	width: 100%;
+	text-align: center;
+	border: none;
+	z-index: -1;
+	font-size: 50px;
+	font-family: "Roboto", Arial;
 }
 
 .long_v {
@@ -162,6 +175,7 @@
 .blank {
 	width: 96px;
 	height: 96px;
+	z-index: -2;
 }
 
 #l11 {
