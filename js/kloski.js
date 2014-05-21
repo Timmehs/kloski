@@ -120,7 +120,7 @@ function defineConstraints(surrounds, id) {
 			}
 			if (type == 's') {
 				console.log('Draggable: x:'+gamePiece.position().left+' y:' + gamePiece.position().top);
-				console.log("Blank Piece: " + $("#e2").position().left + "," + $("#e2").position().top);
+				console.log("Blank Piece: x:" + $("#e2").position().left + " y:" + $("#e2").position().top);
 			}
 			
 		
@@ -138,7 +138,7 @@ function defineConstraints(surrounds, id) {
 			var e2y = e2.position().top;
 			if (type == 's') {
 			     if (((pieceX == e1x) && (pieceY == e1y)) || ((pieceX == e2x) && (pieceY == e2y)) ) {
-				console.log('valid move');
+				 
 			     } else {
 			     	// Reset piece position if invalid
 				gamePiece.css({left: coordinates[0], top: coordinates[1]});

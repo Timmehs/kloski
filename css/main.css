@@ -24,6 +24,8 @@
 	top: 48px;
 	padding: 10px;
 	border-radius: 10px;
+	width: 401px;
+	height: 501px; 
 	box-shadow: 10px 10px 5px #888888;
 
 }
@@ -31,7 +33,7 @@
 #gameboard{
 	width: 401px;
 	height: 501px; 
-	position: relative; 
+	position: absolute;
 	background-color: transparent;
 	float:left;
 }
@@ -91,11 +93,12 @@
 	}
 #goal {
 	position: absolute;
-	left: 35%;
-	top: 85%;
+	margin-left: 131px;
+	top: 430px;
+	text-align: center;
 	font-size: 50px;
+	border-bottom: 1px solid red;
 	font-family: "Roboto", Arial;
-	background
 }
 
 .myButton {
