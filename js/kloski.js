@@ -46,6 +46,7 @@ function updatePieces() {
 	if (gameBoard[2][4] == "b4") {
 		alert("YOU HAVE SOLVED THE ANCIENT PUZZLE OF KLOSKI!!!");
 	}
+
 }
 
 
