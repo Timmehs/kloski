@@ -24,8 +24,6 @@
 	top: 48px;
 	padding: 10px;
 	border-radius: 10px;
-	width: 401px;
-	height: 501px; 
 	box-shadow: 10px 10px 5px #888888;
 
 }
@@ -33,7 +31,7 @@
 #gameboard{
 	width: 401px;
 	height: 501px; 
-	position: absolute;
+	position: relative; 
 	background-color: transparent;
 	float:left;
 }
@@ -91,19 +89,7 @@
 	cursor: pointer;
 	background-color: #cccccc;
 	}
-<<<<<<< HEAD
-#goal {
-	position: absolute;
-	margin-left: 131px;
-	top: 430px;
-	text-align: center;
-	font-size: 50px;
-	border-bottom: 1px solid red;
-	font-family: "Roboto", Arial;
-}
-=======
 
->>>>>>> borderwork
 
 .myButton {
 	border: 1px solid black;
