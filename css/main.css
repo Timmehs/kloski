@@ -89,14 +89,7 @@
 	cursor: pointer;
 	background-color: #cccccc;
 	}
-#goal {
-	position: absolute;
-	left: 35%;
-	top: 85%;
-	font-size: 50px;
-	font-family: "Roboto", Arial;
-	background
-}
+
 
 .myButton {
 	border: 1px solid black;
@@ -122,7 +115,16 @@
 	position: absolute;
 	background-size: auto;
 	opacity: 0.95;
-	
+}
+#goal {
+	position: absolute;
+	top: 85%;
+	width: 100%;
+	text-align: center;
+	border: none;
+	z-index: -1;
+	font-size: 50px;
+	font-family: "Roboto", Arial;
 }
 
 .long_v {
@@ -159,6 +161,7 @@
 .blank {
 	width: 96px;
 	height: 96px;
+	z-index: -2;
 }
 
 #l11 {
