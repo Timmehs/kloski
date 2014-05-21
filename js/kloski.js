@@ -140,6 +140,7 @@ function defineConstraints(surrounds, id) {
 			     if (((pieceX == e1x) && (pieceY == e1y)) || ((pieceX == e2x) && (pieceY == e2y)) ) {
 				console.log('valid move');
 			     } else {
+			     	// Reset piece position if invalid
 				gamePiece.css({left: coordinates[0], top: coordinates[1]});
 								
 			     }
@@ -389,7 +390,7 @@ function horizontalChecks(surrounds, oldX, oldY){
 
 	if (surrounds[4] == 'e' && surrounds[5] == 'e') {
 		newY += 100;
-		console.log("Empty below");
+		
 	}
 	
 	
@@ -399,7 +400,6 @@ function horizontalChecks(surrounds, oldX, oldY){
 function smallChecks(surrounds, oldX, oldY){
 	var newX = oldX;
 	var newY = oldY;
-	console.log("surrounding pieces: " + surrounds);
 	if (surrounds[0] == 'e') {
 		if(surrounds[4] == 'e') {
 			oldX -= 100;

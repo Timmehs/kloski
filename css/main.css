@@ -18,6 +18,24 @@
 	position: relative;
 }
 
+#gameboard_border {
+	position: absolute;
+	border: 1px solid #CCCCCC;
+	top: 48px;
+	padding: 4px;
+	border-radius: 10px;
+	box-shadow: 10px 10px 5px #888888;
+
+}
+
+#gameboard{
+	width: 401px;
+	height: 501px;
+	position: relative;
+	background-color: transparent;
+	float:left;
+}
+
 #interface {
 	top: 200px;
 	width: 300px;
@@ -93,16 +111,7 @@
 	background-color: #cccccc;
 }
 
-#gameboard{
-	width: 401px;
-	height: 501px;
-	top: 48px;
-	border-radius: 10px;
-	box-shadow: 10px 10px 5px #888888;
-	position: relative;
-	background-color: transparent;
-	float:left;
-}
+
 
 
 #gameboard * {
