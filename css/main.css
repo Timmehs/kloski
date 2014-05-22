@@ -1,3 +1,41 @@
+#winstructions{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-image: url('../img/welcome_bg.png');
+	z-index: 5;
+	text: white;
+	font-size: 30px;
+	text-align: center;
+	border: none;
+
+}
+
+#instructions {
+	margin-top: 200px;
+	position: relative;
+	padding: 10px;
+	width: 300px;
+	color: white;
+	font-size: 30px;
+	text-align: center;
+	border-radius: 10px;
+	border: 1px solid #cccccc;
+	background-image: url('../img/welcome_bg.png');
+	font-family: "Georgia";
+}
+
+#instructions ul {
+	font-size: 18px;
+	text-align:left;
+	font-family: "Helvetica", "Arial";
+	
+}
+
+
+
 #dashboard {
 	width: 100%;
 	top: 10%;
