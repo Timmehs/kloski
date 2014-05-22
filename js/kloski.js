@@ -7,7 +7,7 @@ var pieces = ["#l11","#b1","#l21", "#l31","#h1", "#l41","#sm1","#sm2","#sm3","#s
 
 var moveCounter = 0;
 	
-var click = new Audio("click1.wav"); 
+//var click = new Audio("click1.wav"); 
 	
 $(document).ready(function(){
 	updatePieces();
@@ -159,14 +159,14 @@ function defineConstraints(surrounds, id) {
 			gamePiece.draggable('option', 'axis', false);
 			if ($(id).offset().left != position.left) {
 				swapBlanks(id, coordinates);
-				click.play();
+				//click.play();
 				moveCounter++;
 				updatePieces();
 				consoleShowBoard();
 			} else if($(id).offset().top != position.top) {
 				swapBlanks(id, coordinates);
 				moveCounter++;
-				click.play();
+				//click.play();
 				updatePieces();
 				consoleShowBoard();
 			} 
