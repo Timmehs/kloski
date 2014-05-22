@@ -141,21 +141,21 @@
 	left: 100px;
 	position: relative;
 	text-align: left;
-	background-color: #AE4638;
+	background-image: url('../img/jak.jpg');
 	box-shadow: inset 0 0 6px black;
 }
 
 .long_h {
 	width: 196px;
 	height: 96px;
-	background-color: #255e6c;
+	background-image: url('../img/pb.jpg');
 	box-shadow: inset 0 0 6px black;
 }
 
 .sm {
 	width: 96px;
 	height: 96px;
-	background-color: #A6D066;
+	background-image: url('../img/gunL.png');
 	box-shadow: inset 0 0 6px black;
 }
 
@@ -166,17 +166,21 @@
 }
 
 #l11 {
+	background-image: url('../img/marcL.png');
 	left: 0px;
 }
 #l21 {
+	background-image: url('../img/marcR.png');
 	left: 300px;
 }
 
 #l31 {
+	background-image: url('../img/marcL.png');
 	top: 200px;
 }
 
 #l41 {
+	background-image: url('../img/marcR.png');
 	left: 300px;
 	top: 200px;
 }
