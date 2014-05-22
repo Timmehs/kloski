@@ -41,6 +41,9 @@ function updatePieces() {
 	var gamePiece;
 	var i;
 	var surrounds;
+	if (moveCounter == 1) {
+		$('#reset').show("bounce", "easeInBounce", 100);
+	}
 	for (i = 0; i < pieces.length-2; i++) {
 		gamePiece = $(pieces[i]);
 		surrounds = checkAround(findPiece(gamePiece.attr('id')));
@@ -58,6 +61,7 @@ function updatePieces() {
 
 function resetGame() {
 	var coordinates;
+	$("#reset").hide("puff");
 	gameBoard =
 		[["l11","l12","l31","l32", "sm3"],
 		 ["b1", "b3", "h1","sm1", "e1"  ],
