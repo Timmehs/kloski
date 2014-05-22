@@ -7,7 +7,8 @@ var pieces = ["#l11","#b1","#l21", "#l31","#h1", "#l41","#sm1","#sm2","#sm3","#s
 
 var moveCounter = 0;
 	
-//var click = new Audio("click1.wav"); 
+var click = new Audio("click1.wav");
+var error = new Audio("error.wav");
 	
 $(document).ready(function(){
 	updatePieces();
@@ -115,6 +116,7 @@ function defineConstraints(surrounds, id) {
 		stack: ".sm, .long_v, .long_h, #block",
 		grid: [100,100],
 		start: function(event, ui) {
+				gamePiece.css('opacity', "0.85");
 				oldGameBoard = gameBoard;
 				x = event.originalEvent.pageX;
 				y = event.originalEvent.pageY;
@@ -138,6 +140,7 @@ function defineConstraints(surrounds, id) {
 		},
 		stop: function(event,ui) {
 			// Check if sm position is over blank piece
+			gamePiece.css('opacity', '1');
 			var e1 = $("#e1");
 			var e2 = $("#e2");
 			var pieceX = Math.round(gamePiece.position().left);
@@ -151,22 +154,22 @@ function defineConstraints(surrounds, id) {
 				 
 			     } else {
 			     	// Reset piece position if invalid
-				gamePiece.css({left: coordinates[0], top: coordinates[1]});
-								
+					error.play();
+					gamePiece.css({left: coordinates[0], top: coordinates[1]});		
 			     }
 			}
 			x = y = null;
 			gamePiece.draggable('option', 'axis', false);
 			if ($(id).offset().left != position.left) {
 				swapBlanks(id, coordinates);
-				//click.play();
+				click.play();
 				moveCounter++;
 				updatePieces();
 				consoleShowBoard();
 			} else if($(id).offset().top != position.top) {
 				swapBlanks(id, coordinates);
 				moveCounter++;
-				//click.play();
+				click.play();
 				updatePieces();
 				consoleShowBoard();
 			} 
