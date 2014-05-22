@@ -12,6 +12,11 @@ var error = new Audio("error.wav");
 	
 $(document).ready(function(){
 	updatePieces();
+	
+	$("#winstructions").click(function(){
+		$("#winstructions").hide("puff");
+	});
+	
 	$("#reset").click(function(){
 		if (moveCounter > 0) {
 			$(".confirm").fadeIn();
