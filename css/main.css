@@ -155,7 +155,7 @@
 .sm {
 	width: 96px;
 	height: 96px;
-	background-image: url('../img/gunL.png');
+	background-image: url('../img/gunter.jpg');
 	box-shadow: inset 0 0 6px black;
 }
 
@@ -166,21 +166,21 @@
 }
 
 #l11 {
-	background-image: url('../img/marcL.png');
+	background-image: url('../img/sp.jpg');
 	left: 0px;
 }
 #l21 {
-	background-image: url('../img/marcR.png');
+	background-image: url('../img/marcR.jpg');
 	left: 300px;
 }
 
 #l31 {
-	background-image: url('../img/marcL.png');
+	background-image: url('../img/fin.jpg');
 	top: 200px;
 }
 
 #l41 {
-	background-image: url('../img/marcR.png');
+	background-image: url('../img/lsp.jpg');
 	left: 300px;
 	top: 200px;
 }
