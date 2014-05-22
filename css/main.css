@@ -35,7 +35,9 @@
 	background-color: transparent;
 	float:left;
 }
-
+#reset {
+	display: none;
+}
 #interface {
 	top: 200px;
 	width: 300px;

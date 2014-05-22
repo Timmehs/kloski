@@ -7,7 +7,7 @@ var pieces = ["#l11","#b1","#l21", "#l31","#h1", "#l41","#sm1","#sm2","#sm3","#s
 
 var moveCounter = 0;
 	
-var click = new Audio("click1.wav"); 
+//var click = new Audio("click1.wav"); 
 	
 $(document).ready(function(){
 	updatePieces();
@@ -41,6 +41,9 @@ function updatePieces() {
 	var gamePiece;
 	var i;
 	var surrounds;
+	if (moveCounter == 1) {
+		$('#reset').show("bounce", "easeInBounce", 100);
+	}
 	for (i = 0; i < pieces.length-2; i++) {
 		gamePiece = $(pieces[i]);
 		surrounds = checkAround(findPiece(gamePiece.attr('id')));
@@ -58,6 +61,7 @@ function updatePieces() {
 
 function resetGame() {
 	var coordinates;
+	$("#reset").hide("puff");
 	gameBoard =
 		[["l11","l12","l31","l32", "sm3"],
 		 ["b1", "b3", "h1","sm1", "e1"  ],
@@ -82,8 +86,8 @@ function defineConstraints(surrounds, id) {
 	var coordinates = [gamePiece.position().left, gamePiece.position().top];
 	var position = gamePiece.offset();
 	var type = id.substring(1,2);
-	var oldX = position.left;
-	var oldY = position.top;
+	var oldX =(position.left);
+	var oldY = (position.top);
 	var newX = oldX;
 	var newY = oldY;
 	var constraints = [];
@@ -136,12 +140,12 @@ function defineConstraints(surrounds, id) {
 			// Check if sm position is over blank piece
 			var e1 = $("#e1");
 			var e2 = $("#e2");
-			var pieceX = gamePiece.position().left;
-			var pieceY = gamePiece.position().top;
-			var e1x = e1.position().left;
-			var e1y = e1.position().top;
-			var e2x = e2.position().left;
-			var e2y = e2.position().top;
+			var pieceX = Math.round(gamePiece.position().left);
+			var pieceY = Math.round(gamePiece.position().top);
+			var e1x = Math.round(e1.position().left);
+			var e1y = Math.round(e1.position().top);
+			var e2x = Math.round(e2.position().left);
+			var e2y = Math.round(e2.position().top);
 			if (type == 's') {
 			     if (((pieceX == e1x) && (pieceY == e1y)) || ((pieceX == e2x) && (pieceY == e2y)) ) {
 				 
@@ -155,14 +159,14 @@ function defineConstraints(surrounds, id) {
 			gamePiece.draggable('option', 'axis', false);
 			if ($(id).offset().left != position.left) {
 				swapBlanks(id, coordinates);
-				click.play();
+				//click.play();
 				moveCounter++;
 				updatePieces();
 				consoleShowBoard();
 			} else if($(id).offset().top != position.top) {
 				swapBlanks(id, coordinates);
 				moveCounter++;
-				click.play();
+				//click.play();
 				updatePieces();
 				consoleShowBoard();
 			} 
@@ -190,12 +194,12 @@ function consoleShowBoard(){
 }	
 
 function swapBlanks(id, coordinates) {
-	var oldX = coordinates[0]/100;
-	var oldY = coordinates[1]/100;
+	var oldX = Math.round(coordinates[0]/100);
+	var oldY = Math.round(coordinates[1]/100);
 	var gamePiece = $(id);
 	var newPosition = gamePiece.position();
-	var newX = newPosition.left/100;
-	var newY = newPosition.top/100;
+	var newX = Math.round(newPosition.left/100);
+	var newY = Math.round(newPosition.top/100);
 	var type = id.substring(1,2);
 	var tmpId;
 	switch (type) {
