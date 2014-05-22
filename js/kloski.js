@@ -17,17 +17,12 @@ $(document).ready(function(){
 			$(".confirm").fadeIn();
 		}
 	});
-	$("#undo").click(function() {
-		if (moveCounter > 0) {
-			undo(gameStates.pop());
-		}
-	});
 	$("#ok").click(function(){
 		$(".confirm").hide();
 		resetGame();
 		
 	});
-	$("#cancel").click(function(){
+	$("#cancel").click(function(){g
 		$(".confirm").hide();
 	});
 	
