@@ -1,3 +1,17 @@
+/*
+
+KLOTSKI game written by Tim Sandberg
+Enables drag and drop movement and game play
+of Klotski sliding block puzzle game.
+To work correctly, all directories and html/css files must be intact so that the website can load.
+
+*/
+
+
+
+
+
+
 var gameBoard =
 		[["l11","l12","l31","l32", "sm3"],
 		 ["b1", "b3", "h1","sm1", "e1"  ],
@@ -14,7 +28,8 @@ $(document).ready(function(){
 	updatePieces();
 	
 	$("#winstructions").click(function(){
-		$("#winstructions").hide("puff");
+		$("#instructions").hide("puff");
+		$("#winstructions").fadeOut(300);
 	});
 	
 	$("#reset").click(function(){
@@ -345,13 +360,11 @@ function swapBlanks(id, coordinates) {
 				$("#"+gameBoard[oldX+1][oldY+1]).css({left: (oldX+1)*100, top:  (oldY+1) * 100});
 			
 			}
-			
-			
 			break;
+			
 		default:
 			break;
 	}
-	//alert(gameBoard[0] + "\n" + gameBoard[1] + "\n" + gameBoard[2] + "\n" + gameBoard[3]);
 	
 }
 
@@ -390,7 +403,6 @@ function longChecks(surrounds, oldX, oldY){
 	return [oldX, oldY, newX, newY];
 }
 
-//STILL HAVING FUNKY ISSUES WITH HORIZONTAL CHECKS
 function horizontalChecks(surrounds, oldX, oldY){
 	var newX = oldX;
 	var newY = oldY;

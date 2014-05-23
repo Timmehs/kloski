@@ -158,10 +158,8 @@
 #goal {
 	position: absolute;
 	top: 85%;
-	width: 100%;
-	text-align: center;
+	left: 121px;
 	border: none;
-	z-index: -1;
 	font-size: 50px;
 	font-family: "Roboto", Arial;
 }
