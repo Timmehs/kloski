@@ -8,10 +8,6 @@ To work correctly, all directories and html/css files must be intact so that the
 */
 
 
-
-
-
-
 var gameBoard =
 		[["l11","l12","l31","l32", "sm3"],
 		 ["b1", "b3", "h1","sm1", "e1"  ],
@@ -53,6 +49,8 @@ $(document).ready(function(){
 	
 });
 
+
+// Maintains board integrity if window size is changed
 $(window).resize(function() {
 	updatePieces();
 });
@@ -98,7 +96,6 @@ function resetGame() {
 			top: coordinates[1] * 100});
 	}
 	updatePieces();
-	//alert(gameBoard[0] + "\n" + gameBoard[1] + "\n" + gameBoard[2] + "\n" + gameBoard[3]);
 }
 	
 	

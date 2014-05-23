@@ -34,8 +34,6 @@
 	
 }
 
-
-
 #dashboard {
 	width: 100%;
 	top: 10%;
@@ -73,14 +71,17 @@
 	background-color: transparent;
 	float:left;
 }
+
 #reset {
 	display: none;
 }
+
 #interface {
 	top: 200px;
 	width: 300px;
 	position: absolute;
 }
+
 #interface td {
 	padding: 5px;
 	width: 100px;
@@ -127,8 +128,7 @@
 #ok:hover, #cancel:hover {
 	cursor: pointer;
 	background-color: #cccccc;
-	}
-
+}
 
 .myButton {
 	border: 1px solid black;
@@ -142,9 +142,6 @@
 	cursor: pointer;
 	background-color: #cccccc;
 }
-
-
-
 
 #gameboard * {
 	border: 2px solid white;
